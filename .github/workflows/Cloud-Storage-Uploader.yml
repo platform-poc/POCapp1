@@ -1,41 +1,35 @@
 name: NodeJS with Webpack and Upload Artifact
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
-  workflow_dispatch:
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [16.x]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Google Cloud SDK
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@v1.1.1
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          version: '360.0.0' # Specify the desired version of the Google Cloud SDK
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3.7.0
-        with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 16.x
 
       - name: Install Dependencies and Build
         run: |
           npm install
           npx webpack
 
-      - name: Set up gsutil
-        run: |
-          gcloud components install gsutil -q
+      - name: Set up Google Cloud SDK
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@v1.1.1
+        with:
+          version: '342.0.0' # Specify the desired version of the Google Cloud SDK
 
       - name: Upload artifact to Google Cloud Storage
         run: |
