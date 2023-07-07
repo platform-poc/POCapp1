@@ -31,4 +31,4 @@ jobs:
         with:
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS}}
           path: dist/
-          destination: 'app_ikeapoc_com'
+          destination: 'app_ikeapoc_com/app1'
