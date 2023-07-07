@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
             npm install
-            npx web install
+            npx webpack
 
       - name: Publish artifact to Google Cloud Storage
         uses: google-github-actions/upload-cloud-storage@v1.0.3
