@@ -27,5 +27,5 @@ jobs:
         uses: google-github-actions/upload-cloud-storage@v1.0.3
         with:
           service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS}}
-          source: .
+          path: dist/
           destination: gs://app_ikeapoc_com
