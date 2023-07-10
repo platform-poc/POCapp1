@@ -29,4 +29,4 @@ jobs:
           credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
 
       - name: Publish artifact to Google Cloud Storage
-        run: gsutil -m cp -r dist/* gs://app2_ikeapoc_com
+        run: gsutil -m cp -r dist/* gs://app_ikeapoc_com
